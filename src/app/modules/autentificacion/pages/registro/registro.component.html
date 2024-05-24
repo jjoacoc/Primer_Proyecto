@@ -1,0 +1,36 @@
+<div>
+    <div>
+        <i class="material-icons" style="font-size: 200px;">person</i>
+
+        <!-- Nombre de usuario -->
+        <mat-form-field appearance="fill">
+            <mat-label>Ingrese nombre de usuario</mat-label>
+            <input matInput placeholder="Placeholder">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+        <!-- Apellido del usuario -->
+        <mat-form-field appearance="fill">
+            <mat-label>Ingrese Apellido del usuario</mat-label>
+            <input matInput placeholder="Placeholder">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+        
+        <!-- Email del usuario -->
+        <mat-form-field appearance="fill">
+            <mat-label>Ingrese Email del usuario</mat-label>
+            <input matInput placeholder="Placeholder">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+        <!-- Contraseña del usuario -->
+        <mat-form-field>
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        
+    </div>
+</div>
