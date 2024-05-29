@@ -5,32 +5,35 @@
         <!-- Nombre de usuario -->
         <mat-form-field appearance="fill">
             <mat-label>Ingrese nombre de usuario</mat-label>
-            <input matInput placeholder="Placeholder">
+            <input matInput placeholder="Placeholder" required>
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
         <!-- Apellido del usuario -->
         <mat-form-field appearance="fill">
             <mat-label>Ingrese Apellido del usuario</mat-label>
-            <input matInput placeholder="Placeholder">
+            <input matInput placeholder="Placeholder"  required>
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
         
         <!-- Email del usuario -->
         <mat-form-field appearance="fill">
             <mat-label>Ingrese Email del usuario</mat-label>
-            <input matInput placeholder="Placeholder">
+            <input matInput placeholder="Placeholder"  required>
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
         <!-- Contraseña del usuario -->
         <mat-form-field>
             <mat-label>Enter your password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'">
-            <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <input matInput [type]="hide ? 'password' : 'text'" #input minlength="6" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
+            <mat-hint align="start">Minimo:6/{{input.value.length}}</mat-hint>
           </mat-form-field>
         
+
+          <button mat-raised mat-button color="primary" class="boton">Enviar</button>
     </div>
 </div>
