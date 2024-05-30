@@ -1,1 +1,26 @@
-<p>inicio-sesion works!</p>
+<div class="container">
+    <div class="row">
+        <i class="material-icons" style="font-size: 200px;">person</i>
+
+        <!-- Email del usuario -->
+        <mat-form-field appearance="fill">
+            <mat-label>Ingrese Email del usuario</mat-label>
+            <!-- ngModel nos conecta de manera bidireccional como un formulario-->
+            <input matInput placeholder="Placeholder"  required>
+        </mat-form-field>
+
+
+        <!-- Contraseña del usuario -->
+        <mat-form-field>
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" #input minlength="6" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-hint text-align="start">Minimo:6/{{input.value.length}}</mat-hint>
+          </mat-form-field>
+        
+
+          <button mat-raised-button color="primary" (click)="comprobacion()" class="boton">Iniciar Sesion</button>
+    </div>
+</div>

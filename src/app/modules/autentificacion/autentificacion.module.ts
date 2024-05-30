@@ -9,6 +9,11 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { InicioSesionComponent } from './pages/inicio-sesion/inicio-sesion.component';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+
+//COMPONENTES DE ANGULAR
+
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,10 +24,19 @@ import {MatButtonModule} from '@angular/material/button';
   imports: [
     CommonModule,
     AutentificacionRoutingModule,
+
+    MatSelectModule,
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+
+    //formsmodule
+    FormsModule
+  ],
+  exports: [
+    RegistroComponent,
+    InicioSesionComponent,
   ]
 })
 export class AutentificacionModule { }
