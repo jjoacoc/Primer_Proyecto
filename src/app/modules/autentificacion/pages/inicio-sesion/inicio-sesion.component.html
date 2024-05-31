@@ -6,14 +6,14 @@
         <mat-form-field appearance="fill">
             <mat-label>Ingrese Email del usuario</mat-label>
             <!-- ngModel nos conecta de manera bidireccional como un formulario-->
-            <input matInput placeholder="Placeholder"  required>
+            <input [(ngModel)]="usuarios.email" matInput placeholder="Placeholder"  required>
         </mat-form-field>
 
 
         <!-- Contraseña del usuario -->
         <mat-form-field>
             <mat-label>Enter your password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" #input minlength="6" required>
+            <input [(ngModel)]="usuarios.password" matInput [type]="hide ? 'password' : 'text'" #input minlength="6" required>
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
@@ -21,6 +21,7 @@
           </mat-form-field>
         
 
-          <button mat-raised-button color="primary" (click)="comprobacion()" class="boton">Iniciar Sesion</button>
+          <button mat-raised-button color="primary" (click)="Inicio()" class="boton">Iniciar Sesion</button>
+          <button mat-raised-button color="primary" (click)="comprobacion()" class="boton">comprobar</button>
     </div>
 </div>
