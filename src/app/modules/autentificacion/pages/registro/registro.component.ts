@@ -39,6 +39,19 @@ export class RegistroComponent {
     // por consola
     console.log(credenciales)
     console.log(this.coleccionUsuarios)
+      alert("Registro exitoso")
+      this.limpiarInputs()
+  }
 
+  
+  limpiarInputs(){
+    const inputs = {
+      email: this.usuarios.email = '',
+      password: this.usuarios.password = '',
+      uid: this.usuarios.uid = '',
+      apellido: this.usuarios.apellido = '',
+      nombre: this.usuarios.nombre = '',
+      rol: this.usuarios.rol = '',
+    }
   }
 }
