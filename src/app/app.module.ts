@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //componentes globales
 import { SharedModule } from './modules/shared/shared.module';
 
-//vinculaciones / importaciones con firebase
+//vinculaciones / importaciones con firebase.
 import { environment } from 'src/environments/environment';
 import { AngularFireModule} from '@angular/fire/compat';
 import { AngularFireAuthModule} from '@angular/fire/compat/auth';
