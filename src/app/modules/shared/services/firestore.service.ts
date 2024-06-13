@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+//Importamos Firestore y colecciones de la misma
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { Usuario } from 'src/app/models/usuario';
 
