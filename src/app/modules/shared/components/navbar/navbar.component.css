@@ -2,3 +2,27 @@
     flex: 1 1 auto;
   }
   
+  /* Declaramos con palabra reservada MEDIA -> DISPOSITIVOS PEQUEÑOS (ej: celulares) */
+  @media (min-width: 300px) and (max-width: 700px) {
+    mat-toolbar{
+      background-color: purple;
+    }
+
+    #menuInicio {
+      display: none;
+    }
+
+    #menuProducto{
+      display: none;
+    }
+  }
+
+  @media (min-width: 700px){
+    mat-toolbar{
+      background-color: blue;
+    }
+    
+    #menuSecciones{
+      display: none;
+    }
+  }
