@@ -3,6 +3,7 @@ import { Usuario } from 'src/app/models/usuario';
 import { AuthService } from '../../services/auth.service';
 import { FirestoreService } from 'src/app/modules/shared/services/firestore.service';
 import { Router } from '@angular/router';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -94,7 +95,37 @@ export class InicioSesionComponent {
       password: this.usuarios.password,
     };
 
-    const res = await this.servicioAuth
+    try{
+      const usuarioBD = await this.servicioAuth.obtenerUsuario(credenciales.email);
+
+      // ! -> si es diferente
+      // .empty -> metodo de firebase para marcar si algo es vacio
+      if(!usuarioBD || usuarioBD.empty){
+        alert('El correo electronico no esta registrado');
+        this.limpiarInputs();
+        return;
+      }
+
+      //Primer documento (registro) en la coleccion de usuarios que se obtiene desde la consulta.
+      const usuarioDoc = usuarioBD.docs[0];
+
+      /*
+      * Extrae los datos del documento en forma de un objeto y se especifica como de tipo
+      * 'Usuario -> haciendo referencia a nuestra interfaz de Usuario.
+      */
+      const usuarioData = usuarioDoc.data() as Usuario
+
+      // Hash de la contraseña ingresada por el usuario
+      const hashedPassword = CryptoJS.SHA256(credenciales.password).toString();
+
+      if(hashedPassword !== usuarioData.password){
+        alert('Contraseña incorrecta');
+        
+        this.usuarios.password = '';
+        return;
+      }
+
+      const res = await this.servicioAuth
       .iniciarSesion(credenciales.email, credenciales.password)
       .then((res) => {
         alert('Se ha logeado con exito');
@@ -104,7 +135,10 @@ export class InicioSesionComponent {
         alert('Hubo un problema al iniciar sesion' + err);
         this.limpiarInputs();
       });
-  }
+    }catch(error){
+      this.limpiarInputs();
+    }
+}
 
   limpiarInputs() {
     const inputs = {
@@ -112,6 +146,6 @@ export class InicioSesionComponent {
       password: (this.usuarios.password = ''),
     };
   }
-
-  //############################################FIN INICIO DE SESION#####################################################
 }
+  //############################################FIN INICIO DE SESION#####################################################
+
