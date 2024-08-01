@@ -8,6 +8,10 @@ import { FirestoreService } from 'src/app/modules/shared/services/firestore.serv
 
 //paqueteria de criptacion
 import * as CryptoJS from 'crypto-js';
+//Importamos paqueteria de SweetAlert para alertas personalizadas
+import Swal from 'sweetalert2';
+
+
 
 @Component({
   selector: 'app-registro',
@@ -48,14 +52,26 @@ export class RegistroComponent {
       .registrar(credenciales.email, credenciales.password)
       //el metodo then nos devuelve la respuesta esperada por la promesa
       .then((res) => {
-        alert('Ha agregado un usuario con exito ');
+
+        Swal.fire({
+          title: "Buen Trabajo!",
+          text: "Te registraste con exito!",
+          icon: "success"
+        });
+
         //accedemos al servicio de turas -> metodo navigate
         //metodo navigate = permite dirigirnos a diferentes vistas
         this.servicioRutas.navigate(['/inicio']);
       })
 
       .catch((error) => {
-        alert('Hubo un problema al registrar un nuevo usuario :(');
+
+        Swal.fire({
+          icon: "error",
+          title: "Oh no!",
+          text: "Hubo un problema al registrarte",
+        });
+        
       });
 
       const uid = await this.servicioAuth.obtenerUid();

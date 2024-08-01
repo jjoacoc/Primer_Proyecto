@@ -4,19 +4,19 @@
 
         <!-- Nombre de usuario -->
         <mat-form-field appearance="fill">
-            <mat-label>Ingrese nombre de usuario</mat-label>
+            <mat-label>Ingresa tu nombre</mat-label>
             <input [(ngModel)]="usuarios.nombre" matInput placeholder="Placeholder" required>
         </mat-form-field>
 
         <!-- Apellido del usuario -->
         <mat-form-field appearance="fill">
-            <mat-label>Ingrese Apellido del usuario</mat-label>
+            <mat-label>Ingrese tu Apellido</mat-label>
             <input [(ngModel)]="usuarios.apellido" matInput placeholder="Placeholder"  required>
         </mat-form-field>
         
         <!-- Email del usuario -->
         <mat-form-field appearance="fill">
-            <mat-label>Ingrese Email del usuario</mat-label>
+            <mat-label>Ingrese su Email</mat-label>
             <!-- ngModel nos conecta de manera bidireccional como un formulario-->
             <input [(ngModel)]="usuarios.email" matInput placeholder="Placeholder"  required>
         </mat-form-field>
@@ -31,7 +31,7 @@
 
         <!-- Contraseña del usuario -->
         <mat-form-field>
-            <mat-label>Ingrese Contraseña del usuario</mat-label>
+            <mat-label>Ingrese su Contraseña</mat-label>
             <input [(ngModel)]="usuarios.password" matInput [type]="hide ? 'password' : 'text'" #input minlength="6" required>
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
