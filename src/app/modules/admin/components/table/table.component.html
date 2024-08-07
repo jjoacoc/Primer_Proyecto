@@ -36,5 +36,77 @@
             </td>
         </tr>
     </tbody>
-
 </table>
+
+<!-- BOTON PARA AGREGAR PRODUCTOS -->
+<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#agregarProducto">
+    Agregar un nuevo producto
+</button>
+
+<!-- MODAL PARA AGREGAR PRODUCTOS -->
+<div class="modal fade" id="agregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- ENCABEZADO DEL MODAL -->
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Ingrese un nuevo producto</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- ########################################################################################### -->
+
+            <!-- CUERPO DEL MODAL -->
+            <div [formGroup]=producto class="modal-body">
+
+                <div class="mb-3">
+                    <label class="form-label">Ingrese el Nombre del producto</label>
+                    <input class="form-control" type="text" formControlName="nombre"
+                        placeholder="Ej: Departamento de lujo">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ingrese el Precio del producto</label>
+                    <input type="number" class="form-control" formControlName="precio" placeholder="    ...">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ingrese la Descripcion del producto</label>
+                    <input type="text" class="form-control" formControlName="descripcion"
+                        placeholder="Ingrese una descripcion breve">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Seleccione una categoria</label>
+                    <select class="form-control form-select" formControlName="categoria">
+                        <option selected>Elija una opcion</option>
+                        <option value="alquiler">Alquiler</option>
+                        <option value="permuta">Permuta</option>
+                        <option value="ventas">Ventas</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ingrese la imagen del producto</label>
+                    <input type="text" class="form-control" formControlName="imagen"
+                        placeholder="Ingrese vinculo de una imagen">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ingrese el texto alternativo de la imagen</label>
+                    <input type="text" class="form-control" formControlName="alt"
+                        placeholder="Ingrese un texto alternativo para la imagen">
+                </div>
+
+            </div>
+            <!-- ##################################################################################### -->
+
+            <!-- MODAL FOOTER -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-success" (click)="agregarProducto()" data-bs-dismiss="modal">Guardar</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">cerrar</button>
+            </div>
+            <!-- ##################################################################################### -->
+        </div>
+    </div>
+</div>
+<!-- ################################################################################################# -->
