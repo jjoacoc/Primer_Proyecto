@@ -13,6 +13,12 @@ export class TableComponent {
 
   coleccionProductos: Producto[] = [];
 
+  // Variable para manejar el estado de Edicion y Eliminacion de productos
+  modalVisibleProducto: boolean = false;
+
+  // Variable va a tomar el producto que nosotros elijamos
+  productoSeleccionado!: Producto;  // <- permite recibir valores vacios
+
   //Definimos formularios para los productos
 
   /*
@@ -59,6 +65,7 @@ export class TableComponent {
             title: "Buen Trabajo!",
             text: "Se agrego un Producto con exito",
           });
+
         })
         .catch(error => {
           Swal.fire({
@@ -67,6 +74,44 @@ export class TableComponent {
             text: "Hubo un problema al Crear un Producto",
           });
         })
+
     }
   }
+
+  // Funcion para alertar al usuario del producto que desea eliminar
+  mostrarBorrar(productoSeleccionado: Producto){
+    this.modalVisibleProducto = true; //abre el modal
+
+    productoSeleccionado = productoSeleccionado; // toma los valores del producto elegido
+  }
+
+  // Funcion para eliminar definitivamente al producto
+  borrarProducto(){
+    this.servicioCrud.eliminarProducto(this.productoSeleccionado.idProducto)
+    .then(respuesta => {
+      Swal.fire({
+        title: "Buen Trabajo!",
+        text: "Se ha eliminado con Exito!",
+        icon: "success"
+      });
+    })
+    .catch(error => {
+      Swal.fire({
+        title: "Oh No!",
+        text: "Ha ocurrido un Error \n"+error,
+        icon: "error"
+      });
+    })
+  }
+
+  // limpiarInputs() {
+  //   const inputs = {
+  //     nombre: (this.producto.value.nombre = ''),
+  //     descripcion: (this.producto.value.descripcion = ''),
+  //     categoria: (this.producto.value.categoria = ''),
+  //     imagen: (this.producto.value.imagen = ''),
+  //     alt: (this.producto.value.alt = ''),
+  //   };
+  // }
+  
 }
