@@ -79,16 +79,60 @@ export class TableComponent {
   }
 
   // Funcion para alertar al usuario del producto que desea eliminar
-  mostrarBorrar(productoSeleccionado: Producto){
+  mostrarBorrar(productoSeleccionado: Producto) {
     this.modalVisibleProducto = true; //abre el modal
 
-    productoSeleccionado = productoSeleccionado; // toma los valores del producto elegido
+    this.productoSeleccionado = productoSeleccionado; // toma los valores del producto elegido
   }
 
   // Funcion para eliminar definitivamente al producto
-  borrarProducto(){
+  borrarProducto() {
     this.servicioCrud.eliminarProducto(this.productoSeleccionado.idProducto)
-    .then(respuesta => {
+      .then(respuesta => {
+        Swal.fire({
+          title: "Buen Trabajo!",
+          text: "Se ha eliminado con Exito!",
+          icon: "success"
+        });
+      })
+      .catch(error => {
+        Swal.fire({
+          title: "Oh No!",
+          text: "Ha ocurrido un Error \n" + error,
+          icon: "error"
+        });
+      })
+  }
+
+  mostrarEditar(productoSeleccionado: Producto){
+    this.productoSeleccionado = productoSeleccionado
+    //Enviar o "setear" los nuevos valores y reasignarlos a las variables
+    //El ID no se vuelve a enviar ni se modifica, por ende no lo llamamos
+    this.producto.setValue({
+      nombre: productoSeleccionado.nombre,
+      precio: productoSeleccionado.precio,
+      descripcion:productoSeleccionado.descripcion,
+      categoria:productoSeleccionado.categoria,
+      imagen:productoSeleccionado.imagen,
+      alt: productoSeleccionado.alt,
+    })
+  }
+
+
+  editarProducto() {
+    let datos: Producto = {
+      //Solo el ID toma y deja igual su valor
+      idProducto: this.productoSeleccionado.idProducto,
+      nombre: this.producto.value.nombre!,
+      precio: this.producto.value.precio!,
+      descripcion: this.producto.value.descripcion!,
+      categoria: this.producto.value.categoria!,
+      imagen: this.producto.value.imagen!,
+      alt: this.producto.value.alt!
+    }
+
+    this.servicioCrud.modificarProducto(this.productoSeleccionado.idProducto, datos)
+    .then(producto => {
       Swal.fire({
         title: "Buen Trabajo!",
         text: "Se ha eliminado con Exito!",
@@ -98,12 +142,11 @@ export class TableComponent {
     .catch(error => {
       Swal.fire({
         title: "Oh No!",
-        text: "Ha ocurrido un Error \n"+error,
+        text: "Ha ocurrido un Error",
         icon: "error"
       });
     })
   }
-
   // limpiarInputs() {
   //   const inputs = {
   //     nombre: (this.producto.value.nombre = ''),
@@ -113,5 +156,5 @@ export class TableComponent {
   //     alt: (this.producto.value.alt = ''),
   //   };
   // }
-  
+
 }
