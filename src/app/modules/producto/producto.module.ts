@@ -6,6 +6,8 @@ import { ProductoComponent } from './pages/producto/producto.component';
 import { VentasComponent } from './pages/ventas/ventas.component';
 import { AlquilerComponent } from './pages/alquiler/alquiler.component';
 import { PermutaComponent } from './pages/permuta/permuta.component';
+import { CardComponent } from './components/card/card.component';
+import { CardAlquilerComponent } from './components/card-alquiler/card-alquiler.component';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { PermutaComponent } from './pages/permuta/permuta.component';
     ProductoComponent,
     VentasComponent,
     AlquilerComponent,
-    PermutaComponent
+    PermutaComponent,
+    CardComponent,
+    CardAlquilerComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +27,9 @@ import { PermutaComponent } from './pages/permuta/permuta.component';
     ProductoComponent,
     VentasComponent,
     AlquilerComponent,
-    PermutaComponent
+    PermutaComponent,
+    CardComponent,
+    CardAlquilerComponent
   ]
 })
 export class ProductoModule { }

@@ -35,6 +35,7 @@ export class TableComponent {
     alt: new FormControl('', Validators.required),
   })
 
+
   constructor(public servicioCrud: CrudService) { }
 
   ngOnInit(): void {
@@ -65,7 +66,7 @@ export class TableComponent {
             title: "Buen Trabajo!",
             text: "Se agrego un Producto con exito",
           });
-
+          this.producto.reset();
         })
         .catch(error => {
           Swal.fire({
@@ -135,26 +136,17 @@ export class TableComponent {
     .then(producto => {
       Swal.fire({
         title: "Buen Trabajo!",
-        text: "Se ha eliminado con Exito!",
+        text: "Se ha modificado con Exito!",
         icon: "success"
       });
     })
     .catch(error => {
       Swal.fire({
         title: "Oh No!",
-        text: "Ha ocurrido un Error",
+        text: "Ha ocurrido un Error al modificar el producto",
         icon: "error"
       });
     })
   }
-  // limpiarInputs() {
-  //   const inputs = {
-  //     nombre: (this.producto.value.nombre = ''),
-  //     descripcion: (this.producto.value.descripcion = ''),
-  //     categoria: (this.producto.value.categoria = ''),
-  //     imagen: (this.producto.value.imagen = ''),
-  //     alt: (this.producto.value.alt = ''),
-  //   };
-  // }
-
+  
 }
